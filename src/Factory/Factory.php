@@ -1,18 +1,20 @@
 <?php
 
-namespace Shahruslan\ProductionCalendar\Entity;
+namespace Shahruslan\ProductionCalendar\Factory;
 
 use DateTimeImmutable;
+use Shahruslan\ProductionCalendar\Entity\Day;
 use Shahruslan\ProductionCalendar\Entity\Dictionary\Country;
 use Shahruslan\ProductionCalendar\Entity\Dictionary\DayType;
 use Shahruslan\ProductionCalendar\Entity\Dictionary\Region;
 use Shahruslan\ProductionCalendar\Entity\Dictionary\WeekDay;
+use Shahruslan\ProductionCalendar\Entity\Period;
+use Shahruslan\ProductionCalendar\Entity\Statistic;
 
 class Factory
 {
     public static function createPeriod(object $data): Period
     {
-        echo '<pre>' . print_r($data, true) . '</pre>';
         $country = new Country($data->country_code, $data->country_text);
         $region = property_exists($data, 'region_id') ? new Region($data->region_id, $data->region_text) : null;
         $dateStart = new DateTimeImmutable($data->dt_start);

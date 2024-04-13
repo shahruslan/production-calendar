@@ -12,12 +12,12 @@ use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Shahruslan\ProductionCalendar\Entity\Dictionary\DayType;
-use Shahruslan\ProductionCalendar\Entity\Factory;
 use Shahruslan\ProductionCalendar\Entity\Period;
 use Shahruslan\ProductionCalendar\Exception\PeriodException;
+use Shahruslan\ProductionCalendar\Factory\Factory;
 use Shahruslan\ProductionCalendar\Validator\Validator;
 
-class Calendar
+final class Calendar
 {
     private static string $host = 'https://production-calendar.ru';
     private readonly RequestFactoryInterface $requestFactory;
@@ -58,30 +58,53 @@ class Calendar
         return $response->getBody()->getContents();
     }
 
+    /**
+     * Установить буквенный код страны для получения календаря.
+     * В данный момент поддерживаются только ru и kz
+     */
     public function setCountry(string $country): Calendar
     {
         $this->country = $country;
         return $this;
     }
 
+    /**
+     * Позволяет задать регион РФ (в ряде регионов присутствуют свои региональные праздники, для которых
+     * производственный календарь отличается). В качестве номера региона задается однозначные или двузначные коды ГИБДД.
+     * Трехзначные не поддерживаются.
+     */
     public function setRegion(?int $region): Calendar
     {
         $this->region = $region;
         return $this;
     }
 
+    /**
+     * Настройка расчета по 6-ти дневной рабочей недели. По умолчанию расчет идет по 5-дневной недели.
+     */
     public function setIsSixDayWeek(bool $isSixDayWeek): Calendar
     {
         $this->isSixDayWeek = $isSixDayWeek;
         return $this;
     }
 
+    /**
+     * Параметр показывает нужно ли учитывать так называемые нерабочие дни с сохранением заработной платы, которые
+     * начали практиковать с 2020 года (В период пандемии COVID-19). В народе эти дни прозвали "выходные дни,
+     * которые как бы есть, и одновременно которых как бы нет". Weekends of the Schrodinger. Так называемая отсылка к
+     * всем известному коту Шредингера. По умолчанию параметр равен false, то есть подобные выходные не учитываются.
+     */
     public function setIsWeekendsOfSchrodinger(bool $isWeekendsOfSchrodinger): Calendar
     {
         $this->isWeekendsOfSchrodinger = $isWeekendsOfSchrodinger;
         return $this;
     }
 
+    /**
+     * Если задать данному параметру значение true, то результат будет выдаваться в сокращенном формате, только особые
+     * дни, которые отличаются от обычного календаря. По умолчанию этот параметр равен false и календарь выдает все
+     * сутки заданного периода.
+     */
     public function setIsCompact(bool $isCompact): Calendar
     {
         $this->isCompact = $isCompact;
