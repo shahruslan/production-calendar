@@ -11,6 +11,7 @@ $finder = (new Finder())
     ])
     ->append([
         __FILE__,
+        './rector.php',
     ]);
 
 $config = (new Config())
