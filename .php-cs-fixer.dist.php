@@ -33,6 +33,7 @@ $config = (new Config())
             'require_once',
             'switch',
             'try',
+            'declare',
         ],
     ],
     'class_attributes_separation' => [
