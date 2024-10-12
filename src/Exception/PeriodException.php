@@ -1,10 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shahruslan\ProductionCalendar\Exception;
 
 use Exception;
 
-class PeriodException extends Exception
-{
-
-}
+final class PeriodException extends Exception {}

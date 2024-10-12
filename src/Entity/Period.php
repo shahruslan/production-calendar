@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shahruslan\ProductionCalendar\Entity;
 
 use DateTimeImmutable;
 use Shahruslan\ProductionCalendar\Entity\Dictionary\Country;
 use Shahruslan\ProductionCalendar\Entity\Dictionary\Region;
 
-class Period
+final class Period
 {
     /**
      * @param array<Day> $days
@@ -20,6 +22,5 @@ class Period
         public readonly string $period,
         public readonly array $days,
         public readonly Statistic $statistic,
-    ) {
-    }
+    ) {}
 }

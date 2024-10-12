@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shahruslan\ProductionCalendar\Factory;
 
 use DateTimeImmutable;
@@ -11,7 +13,7 @@ use Shahruslan\ProductionCalendar\Entity\Dictionary\WeekDay;
 use Shahruslan\ProductionCalendar\Entity\Period;
 use Shahruslan\ProductionCalendar\Entity\Statistic;
 
-class Factory
+final class Factory
 {
     public static function createPeriod(object $data): Period
     {
@@ -20,7 +22,7 @@ class Factory
         $dateStart = new DateTimeImmutable($data->dt_start);
         $dateEnd = new DateTimeImmutable($data->dt_end);
 
-        $days = array_map(function ($day) {
+        $days = array_map(static function ($day) {
             $data = new DateTimeImmutable($day->date);
             $type = DayType::from($day->type_text);
             $week = WeekDay::from($day->week_day);

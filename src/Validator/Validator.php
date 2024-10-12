@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shahruslan\ProductionCalendar\Validator;
 
 use InvalidArgumentException;
 
-class Validator
+final class Validator
 {
     public function validateYear(int $year): void
     {
