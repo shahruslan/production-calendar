@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Shahruslan\ProductionCalendar\Entity;
 
+/**
+ * @psalm-api
+ */
 final class Statistic
 {
     public function __construct(

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Shahruslan\ProductionCalendar\Entity\Dictionary;
 
+/**
+ * @api
+ */
 final class Region
 {
     public function __construct(

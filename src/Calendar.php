@@ -19,6 +19,9 @@ use Shahruslan\ProductionCalendar\Exception\PeriodException;
 use Shahruslan\ProductionCalendar\Factory\Factory;
 use Shahruslan\ProductionCalendar\Validator\Validator;
 
+/**
+ * @api
+ */
 final class Calendar
 {
     private static string $host = 'https://production-calendar.ru';
@@ -134,7 +137,7 @@ final class Calendar
         );
 
         if ($this->region !== null) {
-            $region = str_pad($this->region, 2, '0', STR_PAD_LEFT);
+            $region = str_pad("$this->region", 2, '0', STR_PAD_LEFT);
             $url .= "&region=$region";
         }
 
@@ -177,7 +180,7 @@ final class Calendar
     {
         $this->validator->validateYear($year);
         $this->validator->validateMonth($month);
-        $month = str_pad($month, 2, '0', STR_PAD_LEFT);
+        $month = str_pad("$month", 2, '0', STR_PAD_LEFT);
         return $this->getPeriod("$month-$year");
     }
 

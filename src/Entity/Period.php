@@ -8,6 +8,9 @@ use DateTimeImmutable;
 use Shahruslan\ProductionCalendar\Entity\Dictionary\Country;
 use Shahruslan\ProductionCalendar\Entity\Dictionary\Region;
 
+/**
+ * @api
+ */
 final class Period
 {
     /**

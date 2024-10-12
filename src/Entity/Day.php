@@ -8,6 +8,9 @@ use DateTimeImmutable;
 use Shahruslan\ProductionCalendar\Entity\Dictionary\DayType;
 use Shahruslan\ProductionCalendar\Entity\Dictionary\WeekDay;
 
+/**
+ * @api
+ */
 final class Day
 {
     public function __construct(
