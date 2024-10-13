@@ -11,13 +11,13 @@
     ],
     "require": {
         "php": "^8.1",
-        "ergebnis/composer-normalize": "^2.44",
         "php-http/client-common": "^2.7",
         "php-http/discovery": "^1.19",
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.0"
     },
     "require-dev": {
+        "ergebnis/composer-normalize": "^2.44",
         "friendsofphp/php-cs-fixer": "^3.64",
         "phpyh/coding-standard": "^2.6",
         "rector/rector": "^1.2",
@@ -35,5 +35,12 @@
             "php-http/discovery": true
         },
         "sort-packages": true
+    },
+    "scripts": {
+        "rector": "vendor/bin/rector process --dry-run",
+        "rector-fix": "vendor/bin/rector process",
+        "phpcs": "vendor/bin/php-cs-fixer check --diff",
+        "phpcs-fix": "vendor/bin/php-cs-fixer fix --diff",
+        "psalm": "vendor/bin/psalm --no-cache"
     }
 }
