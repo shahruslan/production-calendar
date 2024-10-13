@@ -37,10 +37,10 @@
         "sort-packages": true
     },
     "scripts": {
-        "rector": "vendor/bin/rector process --dry-run",
-        "rector-fix": "vendor/bin/rector process",
         "phpcs": "vendor/bin/php-cs-fixer check --diff",
         "phpcs-fix": "vendor/bin/php-cs-fixer fix --diff",
-        "psalm": "vendor/bin/psalm --no-cache"
+        "psalm": "vendor/bin/psalm --no-cache",
+        "rector": "vendor/bin/rector process --dry-run",
+        "rector-fix": "vendor/bin/rector process"
     }
 }
