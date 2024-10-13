@@ -1,30 +1,46 @@
 {
     "name": "shahruslan/production-calendar",
     "description": "Производственный календарь",
-    "type": "library",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Shahruslan\\ProductionCalendar\\": "src/"
-        }
-    },
+    "type": "library",
     "authors": [
         {
             "name": "Руслан Шихмагомедов",
             "email": "shahruslan.m@yandex.ru"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
         "php": "^8.1",
-        "psr/http-client": "^1.0",
-        "psr/http-factory": "^1.0",
+        "php-http/client-common": "^2.7",
         "php-http/discovery": "^1.19",
-        "php-http/client-common": "^2.7"
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.44",
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "phpyh/coding-standard": "^2.6",
+        "rector/rector": "^1.2",
+        "vimeo/psalm": "^5.26"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Shahruslan\\ProductionCalendar\\": "src/"
+        }
     },
     "config": {
         "allow-plugins": {
+            "ergebnis/composer-normalize": true,
             "php-http/discovery": true
-        }
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "phpcs": "vendor/bin/php-cs-fixer check --diff",
+        "phpcs-fix": "vendor/bin/php-cs-fixer fix --diff",
+        "psalm": "vendor/bin/psalm --no-cache",
+        "rector": "vendor/bin/rector process --dry-run",
+        "rector-fix": "vendor/bin/rector process"
     }
 }

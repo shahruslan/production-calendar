@@ -1,8 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shahruslan\ProductionCalendar\Entity;
 
-class Statistic
+/**
+ * @psalm-api
+ */
+final class Statistic
 {
     public function __construct(
         public readonly int $calendarDays,
@@ -11,6 +16,5 @@ class Statistic
         public readonly int $weekends,
         public readonly int $holidays,
         public readonly int $workingHours,
-    ) {
-    }
+    ) {}
 }

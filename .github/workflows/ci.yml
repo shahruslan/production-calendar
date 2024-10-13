@@ -30,8 +30,20 @@ jobs:
       - name: Composer audit
         run: composer audit
 
+      - name: Composer normalize
+        run: composer normalize --diff --dry-run
+
       - name: Lint PHP files
         uses: overtrue/phplint@main
         with:
           path: .
           options: --exclude=vendor
+
+      - name: Php cs fixer
+        run: composer phpcs
+
+      - name: Rector
+        run: composer rector
+
+      - name: Psalm
+        run: composer psalm

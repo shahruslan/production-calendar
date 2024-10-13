@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Shahruslan\ProductionCalendar\Validator;
 
 use InvalidArgumentException;
 
-class Validator
+final class Validator
 {
     public function validateYear(int $year): void
     {
@@ -13,14 +15,14 @@ class Validator
         }
     }
 
-    public function validateMonth($month): void
+    public function validateMonth(int $month): void
     {
         if ($month < 1 || $month > 12) {
             throw new InvalidArgumentException('Месяц указан неверно');
         }
     }
 
-    public function validateQuarter($quarter): void
+    public function validateQuarter(int $quarter): void
     {
         if ($quarter < 1 || $quarter > 4) {
             throw new InvalidArgumentException('Квартал указан неверно');
