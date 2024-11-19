@@ -50,6 +50,7 @@ $calendarForDay = $calendar->getPeriodForDay(new DateTime('2024-01-01'));
 - `type` - тип дня(праздничный, рабочий, выходной и тд);
 - `weekDay` - день недели;
 - `workingHours` - количество рабочих часов.
+- `isProject` - находится ли этот день в проекте закона и еще не утвержден.
 
 Свойство `statistic` отображает ряд статистических данных для задаваемого периода:
 - `calendarDays` – количество календарных дней в периоде;
@@ -117,6 +118,7 @@ Shahruslan\ProductionCalendar\Entity\Period Object
                             [value] => вс
                         )
                     [workingHours] => 0
+                    [isProject] => 0
                 )
             [1] => Shahruslan\ProductionCalendar\Entity\Day Object
                 (
@@ -137,6 +139,7 @@ Shahruslan\ProductionCalendar\Entity\Period Object
                             [value] => пн
                         )
                     [workingHours] => 0
+                    [isProject] => 0
                 )
             [2] => Shahruslan\ProductionCalendar\Entity\Day Object
                 (
@@ -157,6 +160,7 @@ Shahruslan\ProductionCalendar\Entity\Period Object
                             [value] => вт
                         )
                     [workingHours] => 8
+                    [isProject] => 0
                 )
         )
     [statistic] => Shahruslan\ProductionCalendar\Entity\Statistic Object

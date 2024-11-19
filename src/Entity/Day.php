@@ -18,5 +18,6 @@ final class Day
         public readonly DayType $type,
         public readonly WeekDay $weekDay,
         public readonly int $workingHours,
+        public readonly bool $isProject,
     ) {}
 }

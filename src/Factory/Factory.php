@@ -23,10 +23,11 @@ final class Factory
         $dateEnd = new DateTimeImmutable($data->dt_end);
 
         $days = array_map(static function ($day) {
-            $data = new DateTimeImmutable($day->date);
+            $date = new DateTimeImmutable($day->date);
             $type = DayType::from($day->type_text);
             $week = WeekDay::from($day->week_day);
-            return new Day($data, $type, $week, $day->working_hours);
+            $isProject =  (bool) ($day->is_project ?? false);
+            return new Day($date, $type, $week, $day->working_hours, $isProject);
         }, $data->days);
 
         $statistic = new Statistic(
