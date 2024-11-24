@@ -16,7 +16,8 @@ use Psr\Http\Message\RequestFactoryInterface;
 use Shahruslan\ProductionCalendar\Entity\Dictionary\DayType;
 use Shahruslan\ProductionCalendar\Entity\Period;
 use Shahruslan\ProductionCalendar\Exception\PeriodException;
-use Shahruslan\ProductionCalendar\Factory\Factory;
+use Shahruslan\ProductionCalendar\Factory\FactoryWithValinor;
+use Shahruslan\ProductionCalendar\Factory\PeriodFactoryInterface;
 use Shahruslan\ProductionCalendar\Validator\Validator;
 
 /**
@@ -28,6 +29,7 @@ final class Calendar
     private readonly RequestFactoryInterface $requestFactory;
     private readonly ClientInterface $client;
     private readonly Validator $validator;
+    private readonly PeriodFactoryInterface $factory;
 
     public function __construct(
         private readonly string $token,
@@ -38,6 +40,7 @@ final class Calendar
         private bool $isCompact = false,
         RequestFactoryInterface $requestFactory = null,
         ClientInterface $client = null,
+        PeriodFactoryInterface $factory = null,
     ) {
         $this->requestFactory = $requestFactory ?: Psr17FactoryDiscovery::findRequestFactory();
         $this->client = $client ?: new PluginClient(
@@ -45,6 +48,7 @@ final class Calendar
             [new RedirectPlugin()],
         );
         $this->validator = new Validator();
+        $this->factory = $factory ?: new FactoryWithValinor();
     }
 
     /**
@@ -142,13 +146,13 @@ final class Calendar
         }
 
         $content = $this->request($url);
-        $data = json_decode($content);
+        $data = json_decode($content, true);
 
-        if ($data->status === 'error') {
-            throw new PeriodException($data->message);
+        if ($data['status'] === 'error') {
+            throw new PeriodException($data['message']);
         }
 
-        return Factory::createPeriod($data);
+        return $this->factory->createFromArray($data);
     }
 
     /**

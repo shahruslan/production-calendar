@@ -13,17 +13,16 @@ use Shahruslan\ProductionCalendar\Entity\Dictionary\Region;
  */
 final class Period
 {
+    public readonly Country $country;
+    public readonly ?Region $region;
+    public readonly DateTimeImmutable $dateStart;
+    public readonly DateTimeImmutable $dateEnd;
+    public readonly string $workWeekType;
+    public readonly string $period;
+    public readonly Statistic $statistic;
+
     /**
-     * @param array<Day> $days
+     * @var array<array-key, Day>
      */
-    public function __construct(
-        public readonly Country $country,
-        public readonly ?Region $region,
-        public readonly DateTimeImmutable $dateStart,
-        public readonly DateTimeImmutable $dateEnd,
-        public readonly string $workWeekType,
-        public readonly string $period,
-        public readonly array $days,
-        public readonly Statistic $statistic,
-    ) {}
+    public readonly array $days;
 }

@@ -9,8 +9,6 @@ namespace Shahruslan\ProductionCalendar\Entity\Dictionary;
  */
 final class Region
 {
-    public function __construct(
-        public readonly int $number,
-        public readonly string $text,
-    ) {}
+    public readonly int $number;
+    public readonly string $text;
 }
