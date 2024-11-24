@@ -13,10 +13,9 @@ use Shahruslan\ProductionCalendar\Entity\Dictionary\WeekDay;
  */
 final class Day
 {
-    public function __construct(
-        public readonly DateTimeImmutable $date,
-        public readonly DayType $type,
-        public readonly WeekDay $weekDay,
-        public readonly int $workingHours,
-    ) {}
+    public readonly DateTimeImmutable $date;
+    public readonly int $typeId;
+    public readonly DayType $type;
+    public readonly WeekDay $weekDay;
+    public readonly int $workingHours;
 }
