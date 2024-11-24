@@ -29,8 +29,7 @@ final class Calendar
     private readonly RequestFactoryInterface $requestFactory;
     private readonly ClientInterface $client;
     private readonly Validator $validator;
-
-    private readonly FactoryWithValinor $factory;
+    private readonly PeriodFactoryInterface $factory;
 
     public function __construct(
         private readonly string $token,

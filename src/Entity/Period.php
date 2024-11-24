@@ -19,9 +19,10 @@ final class Period
     public readonly DateTimeImmutable $dateEnd;
     public readonly string $workWeekType;
     public readonly string $period;
+    public readonly Statistic $statistic;
+
     /**
      * @var array<array-key, Day>
      */
     public readonly array $days;
-    public readonly Statistic $statistic;
 }

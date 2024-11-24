@@ -7,9 +7,12 @@ namespace Shahruslan\ProductionCalendar\Factory;
 use IteratorAggregate;
 use Traversable;
 
+/**
+ * @implements IteratorAggregate<string, mixed>
+ */
 final class SourceTransforming implements IteratorAggregate
 {
-    private iterable $source;
+    private readonly iterable $source;
 
     public function __construct(array $source)
     {

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 use PHPyh\CodingStandard\PhpCsFixerCodingStandard;
 
 $finder = (new Finder())
@@ -15,6 +16,7 @@ $finder = (new Finder())
     ]);
 
 $config = (new Config())
+    ->setParallelConfig(ParallelConfigFactory::detect())
     ->setCacheFile('./var/php-cs-fixer.cache')
     ->setFinder($finder);
 
@@ -40,6 +42,11 @@ $config = (new Config())
     'class_attributes_separation' => [
         'elements' => [
             'property' => 'none',
+
+            // 'const' => 'only_if_meta',
+            // 'method' => 'only_if_meta',
+            // 'trait_import' => 'only_if_meta',
+            // 'case' => 'only_if_meta'
         ],
     ],
 ]);
